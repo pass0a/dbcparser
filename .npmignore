@@ -1,0 +1,13 @@
+.nyc_output
+coverage
+src
+test
+tsconfig.json
+tslint.json
+update.bat
+node_modules
+tmp
+package-lock.json
+webpack.config.js
+*.map
+test.json

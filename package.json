@@ -1,0 +1,33 @@
+{
+	"name": "@passoa/dbcparser",
+	"version": "1.0.0",
+	"description": "dbc's parser",
+	"main": "dist/index.js",
+	"repository": "git+https://github.com/pass0a/dbcparser.git",
+	"bugs": {
+		"url": "https://github.com/pass0a/dbcparser/issues"
+	},
+	"homepage": "https://github.com/pass0a/dbcparser#readme",
+	"scripts": {
+		"build": "rimraf dist/ && cross-env opt=build webpack",
+		"dev": "rimraf dist/ && cross-env opt=dev webpack",
+		"test": "passoa dist/test.js"
+	},
+	"author": "losper",
+	"license": "MIT",
+	"dependencies": {},
+	"devDependencies": {
+		"cross-env": "^6.0.3",
+		"@babel/core": "^7.5.5",
+		"@babel/preset-env": "^7.5.5",
+		"@types/node": "^12.6.8",
+		"@types/tape": "^4.2.33",
+		"babel-loader": "^8.0.6",
+		"rimraf": "^2.6.3",
+		"ts-loader": "^6.0.4",
+		"typescript": "^3.5.3",
+		"webpack": "^4.36.1",
+		"webpack-bundle-analyzer": "^3.3.2",
+		"webpack-cli": "^3.3.6"
+	}
+}
