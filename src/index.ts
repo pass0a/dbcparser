@@ -130,10 +130,10 @@ export default class dbc {
 		this.tmpObject = {};
 		if (word.length > 4) {
 			this.id = word[2];
-			this.tmpObject.msgId = word[1];
+			this.tmpObject.msgId = +word[1];
 			this.tmpObject.list = {};
 			for (let index = 3; index + 1 < word.length; index += 2) {
-				this.tmpObject.list[word[index + 1]] = +word[index];
+				this.tmpObject.list[word[index]] = word[index + 1];
 			}
 			this.obj.value[this.id] = this.tmpObject;
 		}
