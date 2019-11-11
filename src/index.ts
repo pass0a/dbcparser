@@ -69,7 +69,7 @@ export default class dbc {
 					name: word[1],
 					startbit: +x[1],
 					bitlength: +x[2],
-					endianess: x[3] ? 'inter' : 'motorola',
+					endianess: +x[3] ? 'intel' : 'motorola',
 					valuetype: x[4],
 					factor: +y[1],
 					offset: +y[2],

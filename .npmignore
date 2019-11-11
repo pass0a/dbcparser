@@ -1,7 +1,7 @@
 .nyc_output
 coverage
-src
-test
+src/
+test/
 tsconfig.json
 tslint.json
 update.bat

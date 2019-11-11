@@ -1,8 +1,9 @@
 {
 	"name": "@passoa/dbcparser",
-	"version": "1.0.0",
+	"version": "1.0.2",
 	"description": "dbc's parser",
 	"main": "dist/index.js",
+	"types": "dist/src/index.d.ts",
 	"repository": "git+https://github.com/pass0a/dbcparser.git",
 	"bugs": {
 		"url": "https://github.com/pass0a/dbcparser/issues"
