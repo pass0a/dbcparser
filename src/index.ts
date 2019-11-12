@@ -1,4 +1,4 @@
-import { createReadStream, readFileSync } from 'fs';
+import { createReadStream, readFileSync, createWriteStream } from 'fs';
 enum PS {
 	idle,
 	ns_,
@@ -8,7 +8,7 @@ export default class dbc {
 	obj: any = {};
 	state = PS.idle;
 	tmpObject: any = {};
-	tmpLine: string | undefined = '';
+	tmpLine: string = '';
 	tmpStr: string = '';
 	id: string = '';
 	line_num = 0;
@@ -34,6 +34,7 @@ export default class dbc {
 	}
 	parseBS_(word: string[]) {
 		/// 波特率定义
+		this.state = PS.idle;
 	}
 	parseBU_(word: string[]) {
 		/// 网络节点的定义
@@ -195,6 +196,7 @@ export default class dbc {
 					break;
 			}
 		}
+		console.log(this.state, line);
 		if (this.state == PS.string) {
 			this.tmpStr += '\n';
 			return false;
@@ -235,9 +237,14 @@ export default class dbc {
 		}
 	}
 	parseString(data: string) {
-		var lines = data.split('\n');
+		if (this.tmpLine.length) {
+			data = this.tmpLine + data;
+			this.tmpLine = '';
+		}
+		let lines = data.split('\n');
 		if (!data.endsWith('\n')) {
-			this.tmpLine = lines.pop();
+			let tmp = lines.pop();
+			if (tmp) this.tmpLine = tmp;
 		}
 		for (let index = 0; index < lines.length; index++) {
 			this.line_num++;
