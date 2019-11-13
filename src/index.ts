@@ -8,7 +8,7 @@ export default class dbc {
 	obj: any = {};
 	state = PS.idle;
 	tmpObject: any = {};
-	tmpLine: string | undefined = '';
+	tmpLine: any = '';
 	tmpStr: string = '';
 	id: string = '';
 	line_num = 0;
@@ -93,7 +93,7 @@ export default class dbc {
 			this.tmpObject.signals = {};
 			this.obj.annotation[this.id] = this.tmpObject;
 		} else {
-			console.log(this.line_num, word);
+			// console.log(this.line_num, word);
 		}
 	}
 	parseCM_SG_(word: string[]) {
@@ -131,9 +131,10 @@ export default class dbc {
 		if (word.length > 4) {
 			this.id = word[2];
 			this.tmpObject.msgId = +word[1];
-			this.tmpObject.list = {};
+			this.tmpObject.list = [];
 			for (let index = 3; index + 1 < word.length; index += 2) {
-				this.tmpObject.list[word[index]] = word[index + 1];
+				// this.tmpObject.list[word[index]] = word[index + 1];
+				this.tmpObject.list.push({ val: +word[index], title: word[index + 1] });
 			}
 			this.obj.value[this.id] = this.tmpObject;
 		}
@@ -195,6 +196,7 @@ export default class dbc {
 					break;
 			}
 		}
+		// console.log(this.state);
 		if (this.state == PS.string) {
 			this.tmpStr += '\n';
 			return false;
@@ -235,6 +237,10 @@ export default class dbc {
 		}
 	}
 	parseString(data: string) {
+		if (this.tmpLine.length) {
+			data = this.tmpLine + data;
+			this.tmpLine = '';
+		}
 		var lines = data.split('\n');
 		if (!data.endsWith('\n')) {
 			this.tmpLine = lines.pop();
@@ -247,6 +253,8 @@ export default class dbc {
 					this.dispatch(this.word);
 					this.word = [];
 				}
+			} else {
+				// console.log(line);
 			}
 		}
 	}
