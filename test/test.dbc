@@ -1,1 +1,4 @@
-version "sldfjksdjlf sdlkfjsdlfkj kldfjs"
+BO_ 54 HU_DATC_E_03: 8 H_U
+ SG_ HU_DATC_DrTempSetC : 7|8@0+ (0.5,14) [15|32] "℃"  CGW,CLU
+ SG_ HU_DATC_DrTempSetF : 15|8@0+ (1,56) [58|90] "℉"  CGW,CLU
+ SG_ C_DATC_DTC_Mode : 31|2@0+ (1,0) [0|0] ""  CGW
