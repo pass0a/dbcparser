@@ -53,7 +53,7 @@ export default class dbc {
 			this.tmpObject.dlc = word[3];
 			this.tmpObject.signals = [];
 		} else {
-			console.log(this.line_num, word);
+			// console.log(this.line_num, word);
 		}
 		this.obj.messages[this.id] = this.tmpObject;
 	}
@@ -81,7 +81,7 @@ export default class dbc {
 				};
 				this.tmpObject.signals.push(tmp);
 			} else {
-				console.log(x, y, z);
+				// console.log(x, y, z);
 			}
 		}
 	}
