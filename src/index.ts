@@ -53,7 +53,7 @@ export default class dbc {
 			this.tmpObject.dlc = word[3];
 			this.tmpObject.signals = [];
 		} else {
-			console.log(this.line_num, word);
+			// console.log(this.line_num, word);
 		}
 		this.obj.messages[this.id] = this.tmpObject;
 	}
@@ -81,7 +81,7 @@ export default class dbc {
 				};
 				this.tmpObject.signals.push(tmp);
 			} else {
-				console.log(x, y, z);
+				// console.log(x, y, z);
 			}
 		}
 	}
@@ -94,7 +94,7 @@ export default class dbc {
 			this.tmpObject.signals = {};
 			this.obj.annotation[this.id] = this.tmpObject;
 		} else {
-			console.log(this.line_num, word);
+			// console.log(this.line_num, word);
 		}
 	}
 	parseCM_SG_(word: string[]) {
@@ -131,9 +131,10 @@ export default class dbc {
 		if (word.length > 4) {
 			this.id = word[2];
 			this.tmpObject.msgId = +word[1];
-			this.tmpObject.list = {};
+			this.tmpObject.list = [];
 			for (let index = 3; index + 1 < word.length; index += 2) {
-				this.tmpObject.list[word[index]] = word[index + 1];
+				// this.tmpObject.list[word[index]] = word[index + 1];
+				this.tmpObject.list.push({ val: +word[index], title: word[index + 1] });
 			}
 			this.obj.value[this.id] = this.tmpObject;
 		}
@@ -239,7 +240,7 @@ export default class dbc {
 			data = this.tmpLine + data;
 			this.tmpLine = '';
 		}
-		let lines = data.split('\n');
+		var lines = data.split('\n');
 		if (!data.endsWith('\n')) {
 			let tmp = lines.pop();
 			if (tmp) this.tmpLine = tmp;
@@ -252,6 +253,8 @@ export default class dbc {
 					this.dispatch(this.word);
 					this.word = [];
 				}
+			} else {
+				// console.log(line);
 			}
 		}
 	}
