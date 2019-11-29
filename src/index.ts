@@ -8,7 +8,7 @@ export default class dbc {
 	obj: any = {};
 	state = PS.idle;
 	tmpObject: any = {};
-	tmpLine: any = '';
+	tmpLine: string = '';
 	tmpStr: string = '';
 	id: string = '';
 	line_num = 0;
