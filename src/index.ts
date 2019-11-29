@@ -98,7 +98,6 @@ export default class dbc {
 		}
 	}
 	parseCM_SG_(word: string[]) {
-		//console.log(word);
 		if (word.length > 4) {
 			this.tmpObject.signals[word[3]] = word[4];
 		}
@@ -197,7 +196,6 @@ export default class dbc {
 					break;
 			}
 		}
-		// console.log(this.state);
 		if (this.state == PS.string) {
 			this.tmpStr += '\n';
 			return false;
