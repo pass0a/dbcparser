@@ -4,6 +4,10 @@
 	"description": "dbc's parser",
 	"main": "dist/index.js",
 	"types": "dist/src/index.d.ts",
+	"files": [
+		"/dist/*.js",
+		"/dist/*/*.d.ts"
+	],
 	"repository": "git+https://github.com/pass0a/dbcparser.git",
 	"bugs": {
 		"url": "https://github.com/pass0a/dbcparser/issues"
