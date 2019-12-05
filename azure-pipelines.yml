@@ -17,13 +17,18 @@ pool:
   name: Hosted VS2017
 
 steps:
-  
+
+- task: Npm@1
+  displayName: 'npm install'
+  inputs:
+    workingDir: './'
+    verbose: false
+
 - task: Npm@1
   inputs:
     command: 'custom'
     workingDir: './'
     customCommand: 'run build'
-  condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/v'))
   
 - task: Npm@1
   inputs:
