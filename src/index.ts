@@ -20,6 +20,7 @@ export default class dbc {
 		this.obj.annotation = {};
 		this.obj.types = {};
 		this.obj.value = {};
+		this.obj.msgCycleTime = {};
 	}
 	parseVersion(word: string[]) {
 		this.obj.version = word[1];
@@ -116,7 +117,13 @@ export default class dbc {
 				break;
 		}
 	}
-	parseBA_(word: string[]) {}
+	parseBA_(word: string[]) {
+		if (word.length > 4) {
+			if (word[1] === 'GenMsgCycleTime') {
+				this.obj.msgCycleTime[word[3]] = parseInt(word[4].replace(';', ''));
+			}
+		}
+	}
 	parseBA_DEF_(word: string[]) {
 		// this.tmpObject = {};
 		// if (word.length > 3) {
