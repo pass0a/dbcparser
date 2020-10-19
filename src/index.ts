@@ -21,6 +21,7 @@ export default class dbc {
 		this.obj.types = {};
 		this.obj.value = {};
 		this.obj.msgCycleTime = {};
+		this.obj.sigStartValue = {};
 	}
 	parseVersion(word: string[]) {
 		this.obj.version = word[1];
@@ -119,8 +120,15 @@ export default class dbc {
 	}
 	parseBA_(word: string[]) {
 		if (word.length > 4) {
-			if (word[1] === 'GenMsgCycleTime') {
-				this.obj.msgCycleTime[word[3]] = parseInt(word[4].replace(';', ''));
+			switch (word[1]) {
+				case 'GenMsgCycleTime':
+					this.obj.msgCycleTime[word[3]] = parseInt(word[4].replace(';', ''));
+					break;
+				case 'GenSigStartValue':
+					this.obj.sigStartValue[word[4]] = parseInt(word[5].replace(';', ''));
+					break;
+				default:
+					break;
 			}
 		}
 	}
@@ -219,6 +227,8 @@ export default class dbc {
 					return this.parseVersion(word);
 				case 'ns_':
 					return this.parseNS_(word);
+				case 'ba_':
+					return this.parseBA_(word);
 				case 'bs_':
 					return this.parseBS_(word);
 				case 'bu_':
